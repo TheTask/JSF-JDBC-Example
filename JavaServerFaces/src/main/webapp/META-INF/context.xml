@@ -1,0 +1,8 @@
+<Context>
+
+  <Resource name="jdbc/mkyongdb" auth="Container" type="javax.sql.DataSource"
+               maxActive="100" maxIdle="30" maxWait="10000"
+               username="sysad" password="adminadmin" driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+               url="jdbc:sqlserver://localhost:1433;databaseName=MarekTest"/>
+
+</Context>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      >
+    <h:head> <h:outputStylesheet library="css" name="table-style.css"  /> </h:head>
+ 
+    <h:body>
+    	<h1>JSF + JDBC Example</h1>
+ 
+ 		<h:form>
+	 		<h:dataTable value="#{productBean.initList()}" var="p"
+	    			styleClass="order-table"
+	    			headerClass="order-table-header"
+	    			rowClasses="order-table-odd-row,order-table-even-row" >
+	 
+	    		<h:column> <f:facet name="header"> <h:commandLink action="#{productBean.sortByID()}"> ID </h:commandLink> </f:facet> #{p.ID} </h:column>
+	    		<h:column> <f:facet name="header"> <h:commandLink action="#{productBean.sortByName()}"> Name </h:commandLink> </f:facet> #{p.name} </h:column>
+	 			<h:column> <f:facet name="header"> <h:commandLink action="#{productBean.sortByQuantity()}"> Quantity </h:commandLink> </f:facet> #{p.quantity} </h:column>
+	    		<h:column> <f:facet name="header"> <h:commandLink action="#{productBean.sortByPrice()}"> Price </h:commandLink> </f:facet> #{p.price}</h:column>
+	    	</h:dataTable>
+    	</h:form>
+    	
+    	<br></br>
+    	
+    	<h:outputText value="Total value of products in the table:  #{productBean.totalPrice()}" />
+    	
+    	<br></br>
+    	<br></br>
+    	<br></br>
+    	
+	    <h:form var="p">
+			<h:outputLabel for="txtID">
+				<h:outputText value="Enter ID     " />
+			</h:outputLabel>
+			
+			<h:inputText id="txtID" value="#{p.ID}"/>
+			
+			<br></br>
+	
+			<h:outputLabel for="txtName">
+				<h:outputText value="Enter Product Name     " />
+			</h:outputLabel>
+			
+			<h:inputText id="txtName" value="#{p.name}"/>
+			
+			<br></br>
+			
+			<h:outputLabel for="txtQty">
+				<h:outputText value="Enter Quantity     " />
+			</h:outputLabel>
+			
+			<h:inputText id="txtQty" value="#{p.quantity}"/>
+			
+			<br></br>
+			
+			<h:outputLabel for="txtPrice">
+				<h:outputText value="Enter Price     " />
+			</h:outputLabel>
+			
+			<h:inputText id="txtPrice" value="#{p.price}"/>
+			
+			<br></br>
+			<br></br>
+			
+			<h:commandButton id="cmdInsert" value="Add Item" action="#{productBean.add(p)}" /> 	
+		</h:form>
+		
+		<br></br>
+		<br></br>
+		<br></br>
+		
+		<h4>Enter ID of the product you wish to delete:</h4>
+		
+		<h:form var="intid">
+			<h:outputLabel for="txtPrice">
+				<h:outputText value="ID     " />
+			</h:outputLabel>
+			
+			<h:inputText id="txtPrice" value="#{intid}"/>
+			
+			<br></br>
+			<br></br>
+			
+			<h:commandButton id="cmdInsert" value="Delete Product" action="#{productBean.delete(intid)}" />
+		</h:form>
+    </h:body>
+</html>
